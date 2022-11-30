@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Villes{% endblock %}
+
+{% block body %}
+
+    <h1>Liste des villes</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ville</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ville in villes %}
+                <tr>
+                    <td>{{ville}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

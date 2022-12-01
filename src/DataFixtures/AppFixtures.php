@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use Faker\Factory;
 use App\Entity\Ville;
 use App\Entity\Aeroport;
+use App\Entity\Company;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -15,6 +16,7 @@ class AppFixtures extends Fixture
 
         $faker = Factory::create('fr_FR');
 
+        // Villes & Aéroports
         for ($i = 1; $i <= 5; $i++) {
 
             $aeroport = new Aeroport();
@@ -40,6 +42,16 @@ class AppFixtures extends Fixture
             }
 
             $manager->persist($ville);
+        }
+
+        // Compagnies
+        for ($i = 1; $i <= 5; $i++) {
+            $company = new Company();
+            $company
+                ->setNom("Compagnie $i")
+                ->setSigle("C_$i")
+                ->setEmployes(mt_rand(50, 1000));
+            $manager->persist($company);
         }
 
         $manager->flush();

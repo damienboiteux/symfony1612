@@ -15,7 +15,9 @@
         <tbody>
             {% for ville in villes %}
                 <tr>
-                    <td>{{ville}}</td>
+                    <td>{{ville.nom}}</td>
+                    <td>{{ville.departement}}</td>
+                    <td>{{ville.population}}</td>
                 </tr>
             {% endfor %}
         </tbody>

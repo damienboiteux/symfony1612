@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CompaniesController extends AbstractController
 {
-    #[Route('/companies', name: 'app_companies')]
+    #[Route('/companies', name: 'app_companies', methods: ['GET'])]
     public function index(CompanyRepository $repo): Response
     {
         $companies = $repo->findAll();
@@ -22,8 +22,7 @@ class CompaniesController extends AbstractController
         ]);
     }
 
-
-    #[Route('/companies/{id}', name: 'show_company', requirements: ['id' => '\d+'])]
+    #[Route('/companies/{id}', name: 'show_company', requirements: ['id' => '\d+'], methods: ['GET'])]
     public function show(Company $company): Response
     {
         return $this->render('companies/show.html.twig', [
@@ -31,13 +30,25 @@ class CompaniesController extends AbstractController
         ]);
     }
 
-    #[Route('/companies/create', name: "add_company")]
+    #[Route('/companies/create', name: "add_company", methods: ['GET', 'POST'])]
     public function add(): Response
     {
-        $formulaire = $this->createForm(CompanyType::class);
+        $company = new Company();
+
+        $formulaire = $this->createForm(CompanyType::class, $company);
 
         return $this->render('companies/add.html.twig', [
             'formulaire'    =>  $formulaire->createView(),
         ]);
+    }
+
+    #[Route('/companies/modify/{id}', name: "modify_company", methods: ['GET', 'POST'])]
+    public function modify()
+    {
+    }
+
+    #[Route('/companies/delete/{id}', name: "delete_company", methods: ['GET'])]
+    public function delete()
+    {
     }
 }

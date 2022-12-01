@@ -3,18 +3,24 @@
 {% block title %}Hello CompaniesController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+    <h1>Compagnies</h1>
+    <table class="table">
+        <thead>
+            <th>#</th>
+            <th>Nom</th>
+            <th>Sigle</th>
+            <th>Employés</th>
+        </thead>
+        {% for company in companies %}
+            <tr>
+                <td>{{ company.id }}</td>
+                <td>{{ company.nom }}</td>
+                <td>{{ company.sigle }}</td>
+                <td>{{ company.employes }}</td>
+            </tr>
+        {% endfor %}
+    </table>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/damien/symfony-1612/rwf3/src/Controller/CompaniesController.php'|file_link(0) }}">src/Controller/CompaniesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/damien/symfony-1612/rwf3/templates/companies/index.html.twig'|file_link(0) }}">templates/companies/index.html.twig</a></code></li>
-    </ul>
-</div>
+
 {% endblock %}

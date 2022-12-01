@@ -2,9 +2,8 @@
 
 namespace App\Controller;
 
-use App\Repository\VilleRepository;
+use App\Entity\Company;
 use App\Repository\CompanyRepository;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,14 +20,11 @@ class CompaniesController extends AbstractController
         ]);
     }
 
-    #[Route('/companies/{id}', name: "show_company")]
-    public function show(Request $request, CompanyRepository $repo): Response
+    #[Route('/companies/{id}', name: 'show_company')]
+    public function show(Company $company): Response
     {
-        $id = $request->attributes->get('id');
-        $company = $repo->find($id);
-
         return $this->render('companies/show.html.twig', [
-            'company' => $company,
+            'company' =>  $company,
         ]);
     }
 }

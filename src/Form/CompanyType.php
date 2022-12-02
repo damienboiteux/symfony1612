@@ -16,22 +16,22 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('nom', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'Champ obligatoire']),
-                ]
+                // 'constraints' => [
+                //     new NotBlank(['message' => 'Champ obligatoire']),
+                // ]
             ])
             ->add('sigle', TextType::class, [
-                'constraints' => [
-                    new NotBlank(['message' => 'Champ obligatoire']),
-                ]
+                // 'constraints' => [
+                //     new NotBlank(['message' => 'Champ obligatoire']),
+                // ]
             ])
             ->add('employes', IntegerType::class, [
                 'attr' => [
                     'class' => 'col-3',
                 ],
-                'constraints' => [
-                    new NotBlank(['message' => 'Champ obligatoire']),
-                ]
+                // 'constraints' => [
+                //     new NotBlank(['message' => 'Champ obligatoire']),
+                // ]
             ]);
     }
 

@@ -17,7 +17,11 @@ class CompanyType extends AbstractType
         $builder
             ->add('nom', TextType::class)
             ->add('sigle', TextType::class)
-            ->add('employes', IntegerType::class)
+            ->add('employes', IntegerType::class, [
+                'attr' => [
+                    'class' => 'col-3',
+                ]
+            ])
             // ->add('submit', SubmitType::class)
         ;
     }

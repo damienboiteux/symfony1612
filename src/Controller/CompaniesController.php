@@ -46,12 +46,25 @@ class CompaniesController extends AbstractController
 
         return $this->render('companies/add.html.twig', [
             'formulaire'    =>  $formulaire->createView(),
+            // 'titre'         =>  'Nouvelle compagnie',
         ]);
     }
 
     #[Route('/companies/modify/{id}', name: "modify_company", methods: ['GET', 'POST'])]
-    public function modify()
+    public function modify(Company $company, Request $request, CompanyRepository $repo)
     {
+        $formulaire = $this->createForm(CompanyType::class, $company);
+        $formulaire->handleRequest($request);
+
+        if ($formulaire->isSubmitted() && $formulaire->isValid()) {
+            $repo->save($company, true);
+            return $this->redirectToRoute('app_companies');
+        }
+
+        return $this->render('companies/update.html.twig', [
+            'formulaire' => $formulaire->createView(),
+            // 'titre' => 'Modification de la compagnie ' . $company->getNom(),
+        ]);
     }
 
     #[Route('/companies/delete/{id}', name: "delete_company", methods: ['GET'])]

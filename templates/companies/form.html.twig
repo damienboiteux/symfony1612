@@ -2,8 +2,8 @@
 
 {# {{ form_start(formulaire, {'attr': {'novalidate':'novalidate'}})}} #}
 {{ form_start(formulaire)}}
-    {# {{ form_widget(formulaire)}} #}
-    <div class="row">
+    {{ form_widget(formulaire)}}
+    {# <div class="row">
         {{ form_row(formulaire.nom)}}
     </div>
     <div class="row">
@@ -11,6 +11,6 @@
     </div>
     <div class="row">
         {{ form_row(formulaire.sigle)}}
-    </div>
+    </div> #}
     <button class="btn btn-primary">Valider</button>
 {{ form_end(formulaire)}}

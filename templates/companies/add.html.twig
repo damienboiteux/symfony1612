@@ -6,6 +6,7 @@
 
 <h1>Nouvelle compagnie</h1>
 
+
 {# {{ form(formulaire)}}  Intégralité du formulaire #}
 
 {# {{ form_start(formulaire, {'attr': {'novalidate':'novalidate'}})}} #}
@@ -24,6 +25,10 @@
 {# {{ form_end(formulaire)}} #}
 
 {% include "companies/form.html.twig" %}
+
+<div class="col-3">
+        <a href="{{path('app_companies')}}" class="btn btn-primary">Retour à la liste</a>
+    </div>
 
 
 {% endblock %}

@@ -51,7 +51,7 @@ class CompaniesController extends AbstractController
     }
 
     #[Route('/companies/modify/{id}', name: "modify_company", methods: ['GET', 'POST'])]
-    public function modify(Company $company, Request $request, CompanyRepository $repo)
+    public function modify(Company $company, Request $request, CompanyRepository $repo): Response
     {
         $formulaire = $this->createForm(CompanyType::class, $company);
         $formulaire->handleRequest($request);
@@ -68,7 +68,9 @@ class CompaniesController extends AbstractController
     }
 
     #[Route('/companies/delete/{id}', name: "delete_company", methods: ['GET'])]
-    public function delete()
+    public function delete(Company $company, CompanyRepository $repo): Response
     {
+        $repo->remove($company, true);
+        return $this->redirectToRoute('app_companies');
     }
 }
